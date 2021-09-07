@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Praktikum RPLBK</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integr
+      ity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+
+    <style>
+      /* The Modal (background) */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(65, 77, 185);
+        background-color: rgba(75, 77, 182, 0.4);
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid rgb(71, 73, 177);
+        width: 80%;
+      }
+
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <div
+        class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2"
+      >
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+          </li>
+        </ul>
+      </div>
+      <div class="mx-auto order-0">
+        <a class="navbar-brand mx-auto text-uppercase">Praktikum RPLBK Modul 1 Kelompok 4</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target=".dual-collapse2"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="container p-3 my-3 border">
+        <form name="kalkulator">
+          Angka 1 <input type="text" name="satu" /><br />
+          Angka 2<input type="text" name="dua" /><br />
+
+          <label for="operasi">pilih operasi</label>
+          <select id="operasi" name="operasi">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="x">x</option>
+            <option value="/">:</option>
+          </select>
+        </form>
+
+        <button class="btn-primary" id="myBtn">Hitung</button>
+      </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="dispName"></p>
+        <text id="secret" name="myname"></text>
+      </div>
+    </div>
+
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // Get name
+
+      var result = document.getElementById("dispName");
+
+      var tambah = () => {
+        a = eval(kalkulator.satu.value);
+        b = eval(kalkulator.dua.value);
+        c = a + b;
+        document.getElementById("dispName").innerHTML = c;
+        out();
+      };
+
+      var kurang = () => {
+        a = eval(kalkulator.satu.value);
+        b = eval(kalkulator.dua.value);
+        c = a - b;
+        document.getElementById("dispName").innerHTML = c;
+        out();
+      };
+
+      var kali = () => {
+        a = eval(kalkulator.satu.value);
+        b = eval(kalkulator.dua.value);
+        c = a * b;
+        document.getElementById("dispName").innerHTML = c;
+        out();
+      };
+
+      var bagi = () => {
+        a = eval(kalkulator.satu.value);
+        b = eval(kalkulator.dua.value);
+        c = a / b;
+        document.getElementById("dispName").innerHTML = c;
+        out();
+      };
+
+      // When the user clicks the button, open the modal
+      async function out() {
+        let myPromise = new Promise(function (myResolve, myReject) {
+          setTimeout(close, 3000);
+        });
+        document.getElementById("").innerHTML = await myPromise;
+      }
+      btn.onclick = () => {
+        var opr = document.getElementById("operasi").value;
+        modal.style.display = "block";
+        return opr == "+"
+          ? tambah()
+          : opr == "-"
+          ? kurang()
+          : opr == "x"
+          ? kali()
+          : bagi();
+
+        //Show the secret if user in owner
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      var close = (span.onclick = () => {
+        modal.style.display = "none";
+      });
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = (event) => {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
